@@ -1,6 +1,6 @@
 # bastion module
 
-This module sets up a bastion server.
+This module sets up an EC2 bastion server.
 
 ## Generated resources
 - EC2 instance/s
@@ -8,23 +8,17 @@ This module sets up a bastion server.
 
 ## Required variables
 
+### vpc_id
+String: the VPC where the resources will be created in.
+
 ### ami
 String: the AMI to use to create the instances
-
-### instance_type
-String: the EC2 instance type to use
 
 ### key_name
 String: the SSH key to deploy to the instances
 
-### sgs
-List: the security groups to apply to the instances
-
 ### subnets
-List: the subnets on where to launch the instances
-
-### name
-String: a common name to add to the EC2 instances and tags
+List: the subnets on where to launch the bastion
 
 ### environment
 String: How do you want to call your environment, this is helpful if you have more than 1 VPC.
@@ -32,35 +26,40 @@ String: How do you want to call your environment, this is helpful if you have mo
 ### project
 String: The current project
 
+### sg_all_id
+String: ID of the generic security group that will be extended to allow SSH access from the bastion host
+
 ## Optional variables
 
-### instance_count
-Integer: the number of EC2 instances to launch
-Default: 1
+### instance_type
+String: the EC2 instance type to use
 
-### termination_protection
-Boolean: set the termination protection flag to the instances
-Default: false
+### policy
+String: the policy to attach to the instance. The default policy value is:
 
-### ebs_optimized
-Boolean: use EBS optimized volumes
-Default: false
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ecs:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+```
 
-### public_ip
-Boolean: attach a public IP to the instances
-Default: false
+### sgs
+List: the generic security groups that need to be attached to the bastion host. 
+Note that this module will add (and expose) an additional security group specific for specific bastion host rules.
 
-### root_vl_type
-String: the type of the root volume. Can be "standard", "gp2", or "io1"
-Default: "gp2"
+## Outputs
 
-### root_vl_size
-String: size of the root volume, in GB
-Default: "30"
-
-### root_vl_delete
-Boolean: whether the volume should be destroyed on instance termination
-Default: true
+### bastion_sg_id
+String: the id of the bastion security group on which additional (application specific) rules can be added.
 
 ## Example
 
@@ -70,9 +69,10 @@ module "bastion_host" {
   project       = "${var.project}"
   environment   = "${var.environment}"
   ami           = "ami-a7f5bcd4"
+  instance_type = "t2.micro"
   subnets       = "${module.vpc.cat2_public_subnets}"
   key_name      = "default"
   public_ip     = true
-  sgs           = ["${module.securitygroups.sg_all_id}", "${module.securitygroups.sg_bastion_id}"]
+  sgs           = ["${module.securitygroups.sg_all_id}"]
 }
 ```

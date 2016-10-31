@@ -27,13 +27,11 @@ module "bastion_host" {
     subnets = "${var.subnets}"
     project = "${var.project}"
     environment = "${var.environment}"
-    ami = "ami-a7f5bcd4"
-    instance_type = "t2.micro"
+    ami = "${var.ami}"
+    instance_type = "${var.instance_type}"
     key_name = "${var.ssh_key_name}"
     public_ip = true
-    sgs = [
-        "${var.sg_all_id}",
-        "${aws_security_group.sg_bastion.id}"]
+    sgs = "${concat(list("${aws_security_group.sg_bastion.id}"),"${var.sgs}")}"
 }
 
 resource "aws_eip" "bastion_eip" {
@@ -44,18 +42,5 @@ resource "aws_eip" "bastion_eip" {
 resource "aws_iam_role_policy" "policy" {
     name = "policy_bastion_${var.project}_${var.environment}"
     role = "${module.bastion_host.role_id}"
-    policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "ecs:Describe*"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    }
-  ]
-}
-EOF
+    policy = "${var.policy}"
 }
