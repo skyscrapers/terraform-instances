@@ -2,6 +2,10 @@ variable "project" {}
 
 variable "environment" {}
 
+variable "name" {
+  default = "bastion"
+}
+
 variable "subnets" {
   description = "The subnets where the bastion host must be placed in."
   type        = "list"
@@ -35,7 +39,7 @@ variable "policy" {
   "Statement": [
     {
       "Action": [
-        "ecs:Describe*"
+        "ec2:Describe*"
       ],
       "Effect": "Allow",
       "Resource": "*"
