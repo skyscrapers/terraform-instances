@@ -26,8 +26,12 @@ output "instance_network_interface_ids" {
   value = ["${aws_instance.instance.*.network_interface_id}"]
 }
 
+output "instance_private_dns" {
+  value = ["${aws_instance.instance.*.private_dns}"]
+}
+
 output "instance_private_ip" {
-  value = ["${aws_instance.instance.*.private_ips}"]
+  value = ["${aws_instance.instance.*.private_ip}"]
 }
 
 output "instance_vpc_security_group_ids" {
