@@ -2,14 +2,11 @@ variable "instance_count" {
   default = 1
 }
 
-variable "ami" {
-}
+variable "ami" {}
 
-variable "instance_type" {
-}
+variable "instance_type" {}
 
-variable "key_name" {
-}
+variable "key_name" {}
 
 variable "sgs" {
   type = "list"
@@ -43,11 +40,12 @@ variable "root_vl_delete" {
   default = true
 }
 
-variable "name" {
+variable "user_data" {
+  default = ""
 }
 
-variable "environment" {
-}
+variable "name" {}
 
-variable "project" {
-}
+variable "environment" {}
+
+variable "project" {}

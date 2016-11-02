@@ -1,12 +1,10 @@
-variable "project" {
-}
+variable "project" {}
 
-variable "environment" {
-}
+variable "environment" {}
 
 variable "subnets" {
   description = "The subnets where the bastion host must be placed in."
-  type = "list"
+  type        = "list"
 }
 
 variable "ami" {
@@ -17,36 +15,64 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "vpc_id" {
-
-}
+variable "vpc_id" {}
 
 variable "sg_all_id" {
   description = "ID of the generic security group that will be extended to allow SSH access from the bastion host"
 }
 
 variable "sgs" {
-  type = "list"
+  type    = "list"
   default = []
 }
 
-variable "ssh_key_name" {
-
-}
+variable "ssh_key_name" {}
 
 variable "policy" {
   default = <<EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Action": [
-          "ecs:Describe*"
-        ],
-        "Effect": "Allow",
-        "Resource": "*"
-      }
-    ]
-  }
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ecs:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
 EOF
+}
+
+variable "instance_count" {
+  default = 1
+}
+
+variable "termination_protection" {
+  default = false
+}
+
+variable "ebs_optimized" {
+  default = false
+}
+
+variable "public_ip" {
+  default = false
+}
+
+variable "root_vl_type" {
+  default = "gp2"
+}
+
+variable "root_vl_size" {
+  default = "30"
+}
+
+variable "root_vl_delete" {
+  default = true
+}
+
+variable "user_data" {
+  default = ""
 }
