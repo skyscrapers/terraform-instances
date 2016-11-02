@@ -48,7 +48,7 @@ resource "aws_eip" "bastion_eip" {
 }
 
 resource "aws_iam_role_policy" "policy" {
-  name   = "policy_bastion_${var.project}_${var.environment}"
+  name   = "policy_${var.name}_${var.project}_${var.environment}"
   role   = "${module.bastion_host.role_id}"
   policy = "${var.policy}"
 }
