@@ -1,7 +1,7 @@
-# Create common security group
+# Create bastion sg
 resource "aws_security_group" "sg_bastion" {
   name        = "sg_${var.name}_${var.project}_${var.environment}"
-  description = "Security group on which rules can be added to allow more access into the environments"
+  description = "Security group for bastion hosts"
   vpc_id      = "${var.vpc_id}"
 
   tags {
@@ -48,7 +48,7 @@ resource "aws_eip" "bastion_eip" {
 }
 
 resource "aws_iam_role_policy" "policy" {
-  name   = "policy_${var.name}_${var.project}_${var.environment}"
+  name   = "policy_bastion_${var.project}_${var.environment}"
   role   = "${module.bastion_host.role_id}"
   policy = "${var.policy}"
 }
