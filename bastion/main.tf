@@ -22,13 +22,13 @@ resource "aws_security_group_rule" "sg_bastion_in_ssh" {
 }
 
 resource "aws_security_group_rule" "sg_bastion_out_ssh" {
-   type                     = "egress"
-   security_group_id        = "${aws_security_group.sg_bastion.id}"
-   from_port                = 22
-   to_port                  = 22
-   protocol                 = "tcp"
-   source_security_group_id = "${var.sg_all_id}"
- }
+  type                     = "egress"
+  security_group_id        = "${aws_security_group.sg_bastion.id}"
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
+  source_security_group_id = "${var.sg_all_id}"
+}
 
 module "bastion_host" {
   source                 = "../instance"
@@ -53,7 +53,7 @@ module "bastion_host" {
 resource "aws_eip" "bastion_eip" {
   vpc      = true
   count    = "${var.instance_count}"
-  instance = "${module.bastion_host.instance_ids[count]}"
+  instance = "${module.bastion_host.instance_ids}"
 }
 
 resource "aws_iam_role_policy" "policy" {
