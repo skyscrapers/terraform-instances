@@ -53,11 +53,11 @@ module "bastion_host" {
 resource "aws_eip" "bastion_eip" {
   vpc      = true
   count    = "${var.instance_count}"
-  instance = "${module.bastion_host.instance_ids}"
+  instance = "${element(module.bastion_host.instance_ids, 0)}"
 }
 
 resource "aws_iam_role_policy" "policy" {
   name   = "policy_${var.name}_${var.project}_${var.environment}"
-  role   = "${element(module.bastion_host.role_id, 0)}"
+  role   = "${module.bastion_host.role_id}"
   policy = "${var.policy}"
 }
