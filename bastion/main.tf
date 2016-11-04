@@ -48,7 +48,7 @@ module "bastion_host" {
   root_vl_size           = "${var.root_vl_size}"
   root_vl_delete         = "${var.root_vl_delete}"
   user_data              = "${var.user_data}"
-  public_ip              = true
+  public_ip              = "true"
 }
 
 resource "aws_eip" "bastion_eip" {
