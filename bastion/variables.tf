@@ -61,10 +61,6 @@ variable "ebs_optimized" {
   default = false
 }
 
-variable "public_ip" {
-  default = false
-}
-
 variable "root_vl_type" {
   default = "gp2"
 }

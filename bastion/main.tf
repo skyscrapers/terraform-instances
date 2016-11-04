@@ -39,7 +39,6 @@ module "bastion_host" {
   ami                    = "${var.ami}"
   instance_type          = "${var.instance_type}"
   key_name               = "${var.ssh_key_name}"
-  public_ip              = "${var.public_ip}"
   sgs                    = "${concat(list("${aws_security_group.sg_bastion.id}"),"${var.sgs}")}"
   instance_count         = "${var.instance_count}"
   termination_protection = "${var.termination_protection}"
