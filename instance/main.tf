@@ -9,7 +9,7 @@ resource "aws_instance" "instance" {
   disable_api_termination     = "${var.termination_protection}"
   ebs_optimized               = "${var.ebs_optimized}"
   associate_public_ip_address = "${var.public_ip}"
-  user_data                   = "${element(var.user_data, count.index}"
+  user_data                   = "${element(var.user_data, count.index)}"
 
   root_block_device {
     volume_type           = "${var.root_vl_type}"
