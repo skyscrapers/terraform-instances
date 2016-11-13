@@ -22,7 +22,7 @@ Terraform modules to set up a few commonly used instances.
 * [`root_vl_type`]: String(optional)default gp2. The type of volume. Can be "standard", "gp2", or "io1".
 * [`root_vl_size`]: String(optional)default 30. The size of the volume in gigabytes.
 * [`root_vl_delete`]: Bool(optional)default true. Whether the volume should be destroyed on instance termination
-* [`user_data`]: String(optional)default "". The user data to provide when launching the instance.
+* [`user_data`]: List(optional)default [""]. The user data to provide when launching the instance. If `instance_count` >1, each instance launched will use user_data with the corresponding `user_data[count.index]`
 
 ### Output
  * [`bastion_sg_id`]: String: The ID of the security group
@@ -72,7 +72,7 @@ module "bastion" {
 * [`root_vl_type`]: String(optional)default gp2. The type of volume. Can be "standard", "gp2", or "io1".
 * [`root_vl_size`]: String(optional)default 30. The size of the volume in gigabytes.
 * [`root_vl_delete`]: Bool(optional)default true. Whether the volume should be destroyed on instance termination
-* [`user_data`]: String(optional)default "". The user data to provide when launching the instance.
+* [`user_data`]: List(optional)default [""]. The user data to provide when launching the instance. If `instance_count` >1, each instance launched will use user_data with the corresponding `user_data[count.index]`
 
 ### Output
  * [`role_id`]: String: The ID of the role
