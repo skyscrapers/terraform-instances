@@ -42,6 +42,7 @@ variable "root_vl_delete" {
 
 variable "user_data" {
   default = ""
+  type = "list"
 }
 
 variable "name" {}
