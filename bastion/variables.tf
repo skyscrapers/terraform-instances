@@ -49,10 +49,6 @@ variable "policy" {
 EOF
 }
 
-variable "instance_count" {
-  default = 1
-}
-
 variable "termination_protection" {
   default = false
 }

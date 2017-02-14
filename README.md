@@ -15,7 +15,6 @@ Terraform modules to set up a few commonly used instances.
 * [`instance_type`]: String(optional):default t2.micro. The instance type to launch for the bastion host.
 * [`sgs`]: List(optional):default []. Additional security groups to add to the bastion host.
 * [`policy`]: String(optional)default ec2:Describe*. Policy document to attach to the bastion host.
-* [`instance_count`]: Int(optional)default 1. Amount of bastion hosts to create.
 * [`termination_protection`]: Bool(optional)default false. If true, enables EC2 Instance Termination Protection
 * [`ebs_optimized`]: Bool(optional)default false. If true, the launched EC2 instance will be EBS-optimized.
 * [`public_ip`]: Bool(optional)default false. Associate a public ip address with an instance in a VPC.

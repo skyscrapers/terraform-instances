@@ -40,7 +40,7 @@ module "bastion_host" {
   instance_type          = "${var.instance_type}"
   key_name               = "${var.ssh_key_name}"
   sgs                    = "${concat(list("${aws_security_group.sg_bastion.id}"),"${var.sgs}")}"
-  instance_count         = "${var.instance_count}"
+  instance_count         = "1"
   termination_protection = "${var.termination_protection}"
   ebs_optimized          = "${var.ebs_optimized}"
   root_vl_type           = "${var.root_vl_type}"
