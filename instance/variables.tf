@@ -50,3 +50,9 @@ variable "name" {}
 variable "environment" {}
 
 variable "project" {}
+variable "tag_key" {
+  default = ""
+}
+variable "tag_value" {
+  default = ""
+}
