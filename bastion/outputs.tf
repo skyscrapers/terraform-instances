@@ -41,3 +41,6 @@ output "instance_vpc_security_group_id" {
 output "instance_subnet_id" {
   value = "$element(${module.bastion_host.instance_subnet_ids},0)"
 }
+output "instance_az" {
+  value = "$element(${module.bastion_host.instance_azs},0)"
+}
