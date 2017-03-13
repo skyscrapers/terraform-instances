@@ -45,7 +45,3 @@ output "instance_subnet_ids" {
 output "role_id" {
   value = "${aws_iam_role.role.id}"
 }
-
-output "instance_azs" {
-  value = ["${aws_instance.instance.*.availability_zone}"]
-}
