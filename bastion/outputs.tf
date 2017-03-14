@@ -3,35 +3,35 @@ output "bastion_sg_id" {
 }
 
 output "instance_id" {
-  value = "$element(${module.bastion_host.instance_ids},0)"
+  value = "${module.bastion_host.instance_ids[0]}"
 }
 
 output "instance_az" {
-  value = "$element(${module.bastion_host.instance_azs},0)"
+  value = "${module.bastion_host.instance_azs[0]}"
 }
 
 output "instance_placement_group" {
-  value = "$element(${module.bastion_host.instance_placement_groups},0)"
+  value = "${module.bastion_host.instance_placement_groups[0]}"
 }
 
 output "instance_key_name" {
-  value = "$element(${module.bastion_host.instance_key_names},0)"
+  value = "${module.bastion_host.instance_key_names[0]}"
 }
 
 output "instance_public_dns" {
-  value = "$element(${module.bastion_host.instance_public_dns},0)"
+  value = "${module.bastion_host.instance_public_dns[0]}"
 }
 
 output "instance_public_ip" {
-  value = "$element(${module.bastion_host.instance_public_ips},0)"
+  value = "${module.bastion_host.instance_public_ips[0]}"
 }
 
 output "instance_network_interface_id" {
-  value = "$element(${module.bastion_host.instance_network_interface_ids},0)"
+  value = "${module.bastion_host.instance_network_interface_ids[0]}"
 }
 
 output "instance_private_ip" {
-  value = "$element(${module.bastion_host.instance_private_ip},0)"
+  value = "${module.bastion_host.instance_private_ip[0]}"
 }
 
 output "instance_vpc_security_group_id" {
@@ -39,5 +39,5 @@ output "instance_vpc_security_group_id" {
 }
 
 output "instance_subnet_id" {
-  value = "$element(${module.bastion_host.instance_subnet_ids},0)"
+  value = "${module.bastion_host.instance_subnet_ids[0]}"
 }
