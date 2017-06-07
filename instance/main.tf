@@ -19,6 +19,7 @@ resource "aws_instance" "instance" {
 
   tags {
     Name        = "${var.project}-${var.environment}-${var.name}${count.index + 1}"
+    Function    = "${var.name}"
     Environment = "${var.environment}"
     Project     = "${var.project}"
   }
