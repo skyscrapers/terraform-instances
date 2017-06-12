@@ -17,6 +17,8 @@ resource "aws_instance" "instance" {
     delete_on_termination = "${var.root_vl_delete}"
   }
 
+  ebs_block_device = ["${var.ebs_block_devices}"]
+
   tags {
     Name        = "${var.project}-${var.environment}-${var.name}${count.index + 1}"
     Function    = "${var.name}"

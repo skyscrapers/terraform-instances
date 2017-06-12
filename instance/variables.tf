@@ -56,3 +56,7 @@ variable "tag_key" {
 variable "tag_value" {
   default = ""
 }
+
+variable "ebs_block_devices" {
+  default = []
+}
