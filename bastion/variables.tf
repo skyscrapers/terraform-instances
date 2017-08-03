@@ -73,3 +73,7 @@ variable "user_data" {
   default = [""]
   type    = "list"
 }
+
+variable "ebs_block_devices" {
+  default = []
+}

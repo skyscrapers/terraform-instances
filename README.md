@@ -22,6 +22,8 @@ Terraform modules to set up a few commonly used instances.
 * [`root_vl_size`]: String(optional)default 30. The size of the volume in gigabytes.
 * [`root_vl_delete`]: Bool(optional)default true. Whether the volume should be destroyed on instance termination
 * [`user_data`]: List(optional)default [""]. The user data to provide when launching the instance. If `instance_count` >1, each instance launched will use user_data with the corresponding `user_data[count.index]`
+* [`ebs_block_devices`]: List(optional)default []. A list of objects defining `ebs_block_device`, as described in the terraform documentation: https://www.terraform.io/docs/providers/aws/r/instance.html#block-devices
+
 
 ### Output
  * [`bastion_sg_id`]: String: The ID of the security group
