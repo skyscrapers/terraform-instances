@@ -60,3 +60,7 @@ variable "tag_value" {
 variable "ebs_block_devices" {
   default = []
 }
+
+variable "ebs_enabled" {
+  default = true
+}
