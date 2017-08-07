@@ -25,6 +25,10 @@ resource "aws_instance" "instance" {
     Environment = "${var.environment}"
     Project     = "${var.project}"
   }
+
+  lifecycle {
+    ignore_changes = [ "key_name", "user_data" ]
+  }
 }
 
 resource "aws_instance" "instance_no_ebs" {
@@ -51,5 +55,9 @@ resource "aws_instance" "instance_no_ebs" {
     Function    = "${var.name}"
     Environment = "${var.environment}"
     Project     = "${var.project}"
+  }
+
+  lifecycle {
+    ignore_changes = [ "key_name", "user_data" ]
   }
 }
