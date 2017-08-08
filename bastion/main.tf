@@ -50,6 +50,7 @@ module "bastion_host" {
   public_ip              = "true"
   ebs_block_devices      = ["${var.ebs_block_devices}"]
   ebs_enabled            = "${var.ebs_enabled}"
+  tags                   = "${var.tags}"
 }
 
 resource "aws_eip" "bastion_eip" {

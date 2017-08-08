@@ -50,9 +50,11 @@ variable "name" {}
 variable "environment" {}
 
 variable "project" {}
+
 variable "tag_key" {
   default = ""
 }
+
 variable "tag_value" {
   default = ""
 }
@@ -63,4 +65,10 @@ variable "ebs_block_devices" {
 
 variable "ebs_enabled" {
   default = true
+}
+
+variable "tags" {
+  description = "Optional tags"
+  type        = "map"
+  default     = {}
 }

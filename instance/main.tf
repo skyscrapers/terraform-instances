@@ -19,15 +19,15 @@ resource "aws_instance" "instance" {
 
   ebs_block_device = ["${var.ebs_block_devices}"]
 
-  tags {
-    Name        = "${var.project}-${var.environment}-${var.name}${count.index + 1}"
-    Function    = "${var.name}"
-    Environment = "${var.environment}"
-    Project     = "${var.project}"
-  }
+  tags = "${merge("${var.tags}",
+    map("Name", "${var.project}-${var.environment}-${var.name}${count.index + 1}",
+      "Function", "${var.name}",
+      "Environment", "${var.environment}",
+      "Project", "${var.project}"))
+  }"
 
   lifecycle {
-    ignore_changes = [ "key_name", "user_data" ]
+    ignore_changes = ["key_name", "user_data"]
   }
 }
 
@@ -50,14 +50,14 @@ resource "aws_instance" "instance_no_ebs" {
     delete_on_termination = "${var.root_vl_delete}"
   }
 
-  tags {
-    Name        = "${var.project}-${var.environment}-${var.name}${count.index + 1}"
-    Function    = "${var.name}"
-    Environment = "${var.environment}"
-    Project     = "${var.project}"
-  }
+  tags = "${merge("${var.tags}",
+    map("Name", "${var.project}-${var.environment}-${var.name}${count.index + 1}",
+      "Function", "${var.name}",
+      "Environment", "${var.environment}",
+      "Project", "${var.project}"))
+  }"
 
   lifecycle {
-    ignore_changes = [ "key_name", "user_data" ]
+    ignore_changes = ["key_name", "user_data"]
   }
 }
