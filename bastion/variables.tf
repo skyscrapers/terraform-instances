@@ -81,3 +81,9 @@ variable "ebs_block_devices" {
 variable "ebs_enabled" {
   default = true
 }
+
+variable "tags" {
+  description = "Optional tags"
+  type        = "map"
+  default     = {}
+}
