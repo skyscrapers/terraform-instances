@@ -27,7 +27,7 @@ resource "aws_instance" "instance" {
   }"
 
   lifecycle {
-    ignore_changes = [ "key_name", "user_data" ]
+    ignore_changes = ["key_name", "user_data"]
   }
 }
 
@@ -58,6 +58,6 @@ resource "aws_instance" "instance_no_ebs" {
   }"
 
   lifecycle {
-    ignore_changes = [ "key_name", "user_data" ]
+    ignore_changes = ["key_name", "user_data"]
   }
 }
