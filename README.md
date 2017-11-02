@@ -107,3 +107,30 @@ module "bastion" {
   instance_type = "t2.micro"
 }
 ```
+
+## puppet-userdata
+
+This module generates a script that bootstraps puppet on the server. It'll install puppet 4 and target `puppetmaster01.int.skyscrape.rs` by default.
+
+### Available variables:
+* [`customer`]: String(required): Customer name
+* [`project`]: String(optional): Name of the project
+* [`environment`]: String(required): Environment it runs in
+* [`function`]: String(required):Function of the server (eg web, db, elasticsearch)
+* [`amount_of_instances`]: String(optional): For how many instances do you need user data. Defaults to 1
+* [`puppetmaster`]: String(optional): Hostname of puppetmaster. Defaults to `puppetmaster01.int.skyscrape.rs`
+* [`domain`]: String(optional): Domain to set as hostname. Defaults to `skyscrape.rs`
+
+### Output
+ * [`user_datas`]: List: The generated user-data script for each instance.
+
+### Example
+```
+module "tools_userdata" {
+  source              = "github.com/skyscrapers/terraform-instances//puppet-userdata?ref=1.0.1"
+  amount_of_instances = "1"
+  environment         = "${terraform.workspace}"
+  customer            = "${var.customer}"
+  function            = "tools"
+}
+```
