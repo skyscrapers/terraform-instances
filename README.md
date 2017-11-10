@@ -39,6 +39,7 @@ Terraform modules to set up a few commonly used instances.
  * [`instance_private_ip`]: String: The private IP address assigned to the instances
  * [`instance_vpc_security_group_id`]: String: The associated security groups in non-default VPC
  * [`instance_subnet_id`]: String: The VPC subnet ID.
+ * [`iam_role_id`]: String: The IAM Role ID attached to the bastion host.
 
 ### Example
 ```

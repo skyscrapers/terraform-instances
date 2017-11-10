@@ -41,3 +41,7 @@ output "instance_vpc_security_group_id" {
 output "instance_subnet_id" {
   value = "${module.bastion_host.instance_subnet_ids[0]}"
 }
+
+output "iam_role_id" {
+  value = "${module.bastion_host.role_id}"
+}
