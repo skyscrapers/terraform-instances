@@ -146,7 +146,7 @@ Both vault servers are configured with Teleport for SSH management.
 
 2 route53 records are provided to access the individual instances.
 
-![](images/2017/11/vault-component.svg)
+![](vault/images/vault-component.svg)
 
 ### Available variables:
 * [`acm_arn`]: String(required): The ACM ARN to use on the alb
