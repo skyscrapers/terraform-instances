@@ -1,5 +1,5 @@
 variable "project" {
-  default     = ""
+  default = ""
 }
 
 variable "lb_internal" {
