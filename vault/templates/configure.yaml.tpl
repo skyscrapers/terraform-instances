@@ -91,7 +91,7 @@ write_files:
 
     [Service]
     Type=oneshot
-    ExecStart=/usr/bin/certbot renew --quiet --staging --agree-tos --force-renewal --deploy-hook "chgrp -R vault /etc/letsencrypt && chmod -R g=rX /etc/letsencrypt && systemctl reload vault.service"
+    ExecStart=/usr/bin/certbot renew --quiet --agree-tos --deploy-hook "chgrp -R vault /etc/letsencrypt && chmod -R g=rX /etc/letsencrypt && systemctl reload vault.service"
   path: /etc/systemd/system/certbot.service
 - content: |
     [Unit]
