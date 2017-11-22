@@ -1,6 +1,4 @@
-variable "project" {
-  default = ""
-}
+variable "project" {}
 
 variable "lb_internal" {
   default = false

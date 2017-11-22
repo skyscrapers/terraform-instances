@@ -166,8 +166,8 @@ Both vault servers are configured with Teleport for SSH management.
 * [`download_url_teleport`]: String(optional): The download url for Teleport. Defaults to `https://github.com/gravitational/teleport/releases/download/v2.3.5/teleport-v2.3.5-linux-amd64-bin.tar.gz`
 * [`instance_type`]: String(optional): The instance type to use for the vault servers. Defaults to t2.micro
 * [`lb_internal`]: Bool(optional): Should the ALB be created as an internal Loadbalancer
-* [`project`]: String(optional): Name of the project
-* [`vault_nproc`]: String(optional): The amount of nproc to configure vault with. Set this to the amount of CPU cores.
+* [`project`]: String(required): Name of the project
+* [`vault_nproc`]: String(optional): The amount of nproc to configure vault with. Set this to the amount of CPU cores. Defaults to 1
 
 ### Output
  * [`sg_id`]: String: The vault security-group id
@@ -192,6 +192,7 @@ module "ha_vault" {
   source               = "github.com/skyscrapers/terraform-instances//vault?ref=2.0.0"
   teleport_auth_server = "10.10.0.100:3025"
   ami                  = "ami-add175d4"
+  project              = "whatever"
   vault1_subnet        = "${data.terraform_remote_state.static.private_app_subnets[0]}"
   vault2_subnet        = "${data.terraform_remote_state.static.private_app_subnets[1]}"
   teleport_node_sg     = "${data.terraform_remote_state.static.teleport_node_sg_id}"
