@@ -1,5 +1,5 @@
 resource "aws_security_group" "vault" {
-  name        = "vault"
+  name_prefix = "vault_${var.project}_"
   description = "vault specific rules"
   vpc_id      = "${var.vpc_id}"
 
