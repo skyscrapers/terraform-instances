@@ -34,10 +34,6 @@ output "instance_private_ip" {
   value = ["${concat(aws_instance.instance.*.private_ip, aws_instance.instance_no_ebs.*.private_ip)}"]
 }
 
-output "instance_vpc_security_group_ids" {
-  value = ["${concat(aws_instance.instance.*.instance_vpc_security_group_ids, aws_instance.instance_no_ebs.*.instance_vpc_security_group_ids)}"]
-}
-
 output "instance_subnet_ids" {
   value = ["${concat(aws_instance.instance.*.subnet_id, aws_instance.instance_no_ebs.*.subnet_id) }"]
 }
