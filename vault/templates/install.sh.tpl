@@ -15,7 +15,3 @@ sudo chown root:root /usr/local/bin/vault
 sudo /tmp/teleport/install
 
 sudo systemctl daemon-reload
-sudo systemctl enable vault.service
-sudo systemctl start vault.service
-sudo systemctl enable teleport.service
-sudo systemctl start teleport.service
