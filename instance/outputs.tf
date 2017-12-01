@@ -6,10 +6,6 @@ output "instance_azs" {
   value = ["${concat(aws_instance.instance.*.availability_zone, aws_instance.instance_no_ebs.*.availability_zone) }"]
 }
 
-output "instance_placement_groups" {
-  value = ["${concat(aws_instance.instance.*.placement_group, aws_instance.instance_no_ebs.*.placement_group)}"]
-}
-
 output "instance_key_names" {
   value = ["${concat(aws_instance.instance.*.key_name, aws_instance.instance_no_ebs.*.key_name)}"]
 }

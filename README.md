@@ -30,7 +30,6 @@ Terraform modules to set up a few commonly used instances.
  * [`bastion_sg_id`]: String: The ID of the security group
  * [`instance_id`]: String: The instance IDs.
  * [`instance_az`]: String: The availability zone of the instances.
- * [`instance_placement_group`]: String: The placement group of the instances
  * [`instance_key_name`]: String: The key name of the instances
  * [`instance_public_dns`]: String: The public DNS name assigned to the instance. For EC2-VPC, this is only available if you've enabled DNS hostnames for your VPC
  * [`instance_public_ip`]: String: The public IP address assigned to the bastion. NOTE: If you are using an aws_eip with your instance, you should refer to the EIP's address directly and not use public_ip, as this field will change after the EIP is attached.
@@ -84,7 +83,6 @@ module "bastion" {
  * [`role_id`]: String: The ID of the role
  * [`instance_ids`]: List: The instance IDs.
  * [`instance_azs`]: List: The availability zone of the instances.
- * [`instance_placement_groups`]: List: The placement group of the instances
  * [`instance_key_names`]: List: The key name of the instances
  * [`instance_public_dns`]: List: The public DNS name assigned to the instance. For EC2-VPC, this is only available if you've enabled DNS hostnames for your VPC
  * [`instance_public_ips`]: List: The public IP address assigned to the instance, if applicable. NOTE: If you are using an aws_eip with your instance, you should refer to the EIP's address directly and not use public_ip, as this field will change after the EIP is attached.
