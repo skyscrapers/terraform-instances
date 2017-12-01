@@ -10,10 +10,6 @@ output "instance_az" {
   value = "${module.bastion_host.instance_azs[0]}"
 }
 
-output "instance_placement_group" {
-  value = "${module.bastion_host.instance_placement_groups[0]}"
-}
-
 output "instance_key_name" {
   value = "${module.bastion_host.instance_key_names[0]}"
 }
