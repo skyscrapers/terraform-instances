@@ -19,7 +19,7 @@ output "vault1_instance_id" {
 }
 
 output "vault2_instance_id" {
-  value = "${module.vault2.instance_ids[1]}"
+  value = "${module.vault2.instance_ids[0]}"
 }
 
 output "vault1_role_id" {
