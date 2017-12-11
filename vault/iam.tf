@@ -65,6 +65,37 @@ data "aws_iam_policy_document" "vault" {
       "arn:aws:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/*",
     ]
   }
+
+  # As stated in the Vault documentation, this is needed for the AWS auth backend to validate EC2 instances and IAM roles and users
+  # https://www.vaultproject.io/docs/auth/aws.html#recommended-vault-iam-policy
+  statement {
+    sid = "vaultAWSAuthBackend"
+
+    actions = [
+      "ec2:DescribeInstances",
+      "iam:GetInstanceProfile",
+      "iam:GetUser",
+      "iam:GetRole",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+
+  # TODO: also add permissions to assume a vault role in other accounts, in case EC2 instances from other accounts want
+  # access to Vault. Will need either a variable containing the aws accounts or use *
+  # statement {
+  #   sid = "vaultAWSAuthBackendCrossAccount"
+  #
+  #   actions = [
+  #     "sts:AssumeRole",
+  #   ]
+  #
+  #   resources = [
+  #     "arn:aws:iam:<AccountId>:role/<VaultRole>",
+  #   ]
+  # }
 }
 
 resource "aws_iam_policy" "vault" {
