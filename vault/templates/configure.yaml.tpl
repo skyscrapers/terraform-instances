@@ -26,12 +26,6 @@ runcmd:
 
 write_files:
 - content: |
-    teleport:
-      nodename: $NODENAME
-      auth_token: $AUTH_TOKEN
-      advertise_ip: $ADVERTISE_IP
-      auth_servers:
-        - $AUTH_SERVER
     ssh_service:
       enabled: yes
       listen_addr: 0.0.0.0:3022
@@ -52,9 +46,10 @@ write_files:
     After=network.target
 
     [Service]
+    EnvironmentFile=/etc/teleport
     Type=simple
     Restart=on-failure
-    ExecStart=/usr/local/bin/teleport start --config=/etc/teleport.yaml
+    ExecStart=/usr/local/bin/teleport start --config=/etc/teleport.yaml --nodename $NODENAME --advertise-ip $ADVERTISE_IP --auth-server $AUTH_SERVER --token $AUTH_TOKEN
 
     [Install]
     WantedBy=multi-user.target
