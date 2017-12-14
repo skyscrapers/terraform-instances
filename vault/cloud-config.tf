@@ -45,6 +45,8 @@ data "template_file" "cloudconfig_vault1" {
     vault_dns         = "vault1.${var.dns_root}"
     vault_nproc       = "${var.vault_nproc}"
     vault_cluster_dns = "vault.${var.dns_root}"
+    teleport_config   = "${module.teleport_vault1.teleport_config_cloudinit}"
+    teleport_service  = "${module.teleport_vault1.teleport_service_cloudinit}"
   }
 }
 
@@ -68,7 +70,7 @@ data "template_file" "install" {
 }
 
 module "teleport_vault1" {
-  source      = "github.com/skyscrapers/terraform-teleport//teleport-bootstrap-script?ref=2.2.0"
+  source      = "github.com/skyscrapers/terraform-teleport//teleport-bootstrap-script?ref=2.2.1"
   auth_server = "${var.teleport_auth_server}"
   auth_token  = "${var.teleport_token_1}"
   function    = "vault1"
@@ -76,7 +78,7 @@ module "teleport_vault1" {
 }
 
 module "teleport_vault2" {
-  source      = "github.com/skyscrapers/terraform-teleport//teleport-bootstrap-script?ref=2.2.0"
+  source      = "github.com/skyscrapers/terraform-teleport//teleport-bootstrap-script?ref=2.2.1"
   auth_server = "${var.teleport_auth_server}"
   auth_token  = "${var.teleport_token_2}"
   function    = "vault2"

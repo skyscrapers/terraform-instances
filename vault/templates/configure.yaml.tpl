@@ -25,35 +25,8 @@ runcmd:
   - [ systemctl, start, vault.service ]
 
 write_files:
-- content: |
-    ssh_service:
-      enabled: yes
-      listen_addr: 0.0.0.0:3022
-
-      commands:
-        - name: arch
-          command: [uname, -p]
-          period: 1h0m0s
-      permit_user_env: false
-    auth_service:
-      enabled: no
-    proxy_service:
-      enabled: no
-  path: /etc/teleport.yaml
-- content: |
-    [Unit]
-    Description=Teleport SSH Service
-    After=network.target
-
-    [Service]
-    EnvironmentFile=/etc/teleport
-    Type=simple
-    Restart=on-failure
-    ExecStart=/usr/local/bin/teleport start --config=/etc/teleport.yaml --nodename $NODENAME --advertise-ip $ADVERTISE_IP --auth-server $AUTH_SERVER --token $AUTH_TOKEN
-
-    [Install]
-    WantedBy=multi-user.target
-  path: /lib/systemd/system/teleport.service
+${teleport_config}
+${teleport_service}
 - content: |
     [Unit]
     Description=Vault server
