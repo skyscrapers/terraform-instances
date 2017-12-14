@@ -57,6 +57,8 @@ data "template_file" "cloudconfig_vault2" {
     vault_dns         = "vault2.${var.dns_root}"
     vault_nproc       = "${var.vault_nproc}"
     vault_cluster_dns = "vault.${var.dns_root}"
+    teleport_config   = "${module.teleport_vault2.teleport_config_cloudinit}"
+    teleport_service  = "${module.teleport_vault2.teleport_service_cloudinit}"
   }
 }
 
