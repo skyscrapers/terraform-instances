@@ -7,7 +7,7 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids      = ["${var.sgs}"]
   subnet_id                   = "${element(var.subnets, count.index)}"
   disable_api_termination     = "${var.termination_protection}"
-  ebs_optimized               = "${var.ebs_optimized}"
+  ebs_optimized               = "${contains(var.ebs_optimized_list,var.instance_type)}"
   associate_public_ip_address = "${var.public_ip}"
   user_data                   = "${element(var.user_data, count.index)}"
 
@@ -40,7 +40,7 @@ resource "aws_instance" "instance_no_ebs" {
   vpc_security_group_ids      = ["${var.sgs}"]
   subnet_id                   = "${element(var.subnets, count.index)}"
   disable_api_termination     = "${var.termination_protection}"
-  ebs_optimized               = "${var.ebs_optimized}"
+  ebs_optimized               = "${contains(var.ebs_optimized_list,var.instance_type)}"
   associate_public_ip_address = "${var.public_ip}"
   user_data                   = "${element(var.user_data, count.index)}"
 

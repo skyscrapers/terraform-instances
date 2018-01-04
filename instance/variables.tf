@@ -20,10 +20,6 @@ variable "termination_protection" {
   default = false
 }
 
-variable "ebs_optimized" {
-  default = false
-}
-
 variable "public_ip" {
   default = false
 }

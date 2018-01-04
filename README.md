@@ -1,5 +1,5 @@
 # terraform-instances
-Terraform modules to set up a few commonly used instances.
+Terraform modules to set up a few commonly used instances. Based on the instance types it will automatically set the ebs_optimized parameter based on a list in the instance module.
 
 ## bastion
 
@@ -15,8 +15,7 @@ Terraform modules to set up a few commonly used instances.
 * [`instance_type`]: String(optional):default t2.micro. The instance type to launch for the bastion host.
 * [`sgs`]: List(optional):default []. Additional security groups to add to the bastion host.
 * [`policy`]: String(optional)default ec2:Describe*. Policy document to attach to the bastion host.
-* [`termination_protection`]: Bool(optional)default false. If true, enables EC2 Instance Termination Protection
-* [`ebs_optimized`]: Bool(optional)default false. If true, the launched EC2 instance will be EBS-optimized.
+* [`termination_protection`]: Bool(optional)default false. If true, enables EC2 Instance Termination Protection.
 * [`public_ip`]: Bool(optional)default false. Associate a public ip address with an instance in a VPC.
 * [`root_vl_type`]: String(optional)default gp2. The type of volume. Can be "standard", "gp2", or "io1".
 * [`root_vl_size`]: String(optional)default 30. The size of the volume in gigabytes.
@@ -69,7 +68,6 @@ module "bastion" {
 * [`sgs`]: List(required): Additional security groups to add to the bastion host.
 * [`instance_count`]: Int(optional)default 1. Amount of bastion hosts to create.
 * [`termination_protection`]: Bool(optional)default false. If true, enables EC2 Instance Termination Protection
-* [`ebs_optimized`]: Bool(optional)default false. If true, the launched EC2 instance will be EBS-optimized.
 * [`public_ip`]: Bool(optional)default false. Associate a public ip address with an instance in a VPC.
 * [`root_vl_type`]: String(optional)default gp2. The type of volume. Can be "standard", "gp2", or "io1".
 * [`root_vl_size`]: String(optional)default 30. The size of the volume in gigabytes.

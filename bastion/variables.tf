@@ -53,10 +53,6 @@ variable "termination_protection" {
   default = false
 }
 
-variable "ebs_optimized" {
-  default = false
-}
-
 variable "root_vl_type" {
   default = "gp2"
 }
