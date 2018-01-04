@@ -42,7 +42,6 @@ module "bastion_host" {
   sgs                    = "${concat(list("${aws_security_group.sg_bastion.id}"),"${var.sgs}")}"
   instance_count         = "1"
   termination_protection = "${var.termination_protection}"
-  ebs_optimized          = "${var.ebs_optimized}"
   root_vl_type           = "${var.root_vl_type}"
   root_vl_size           = "${var.root_vl_size}"
   root_vl_delete         = "${var.root_vl_delete}"
