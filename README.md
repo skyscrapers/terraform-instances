@@ -150,10 +150,10 @@ Both vault servers are configured with Teleport for SSH management.
 * [`dns_root`]: String(required): The root domain to configure for vault
 * [`lb_subnets`]: List(required): The subnets to use for the alb
 * [`key_name`]: String(required): Name of the sshkey to deploy on the vault instances
-* [`teleport_auth_server`]: String(required): The hostname or ip of the Teleport auth server.
-* [`teleport_node_sg`]: String(required): The security-group ID of the teleport server.
-* [`teleport_token_1`]: String(required): The Teleport token for the first instance. This can be a dynamic short-lived token.
-* [`teleport_token_2`]: String(required): The Teleport token for the second instance. This can be a dynamic short-lived token.
+* [`teleport_auth_server`]: String(optional): The hostname or ip of the Teleport auth server.
+* [`teleport_node_sg`]: String(optional): The security-group ID of the teleport server.
+* [`teleport_token_1`]: String(optional): The Teleport token for the first instance. This can be a dynamic short-lived token.
+* [`teleport_token_2`]: String(optional): The Teleport token for the second instance. This can be a dynamic short-lived token.
 * [`vault1_subnet`]: String(required): The subnet ID for the first vault instance
 * [`vault2_subnet`]: String(required): The subnet ID for the second vault instance
 * [`vpc_id`]: String(required): The VPC id to launch the instances in.
