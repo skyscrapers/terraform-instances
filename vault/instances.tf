@@ -1,9 +1,13 @@
+locals {
+  security_groups = "${compact(list(aws_security_group.vault.id, var.teleport_node_sg))}"
+}
+
 module "vault1" {
-  source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.0.8"
+  source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.0.15"
   project       = "${var.project}"
   environment   = "${terraform.workspace}"
   name          = "vault1"
-  sgs           = ["${aws_security_group.vault.id}", "${var.teleport_node_sg}"]
+  sgs           = "${local.security_groups}"
   subnets       = ["${var.vault1_subnet}"]
   key_name      = "${var.key_name}"
   ami           = "${var.ami}"
@@ -12,11 +16,11 @@ module "vault1" {
 }
 
 module "vault2" {
-  source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.0.8"
+  source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.0.15"
   project       = "${var.project}"
   environment   = "${terraform.workspace}"
   name          = "vault2"
-  sgs           = ["${aws_security_group.vault.id}", "${var.teleport_node_sg}"]
+  sgs           = "${local.security_groups}"
   subnets       = ["${var.vault2_subnet}"]
   key_name      = "${var.key_name}"
   ami           = "${var.ami}"

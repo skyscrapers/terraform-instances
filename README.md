@@ -138,22 +138,23 @@ module "tools_userdata" {
 This terraform module sets up a HA vault with a DynamoDB backend.
 The module sets up TLS using Letsencrypt with dns-01 challenge.
 
-Both vault servers are configured with Teleport for SSH management.
+Both vault servers are optionally configured with Teleport for SSH management.
 
-2 route53 records are provided to access the individual instances.
+Two route53 records are provided to access the individual instances.
 
 ![](vault/images/vault-component.svg)
 
-### Available variables:
+### Available variables
+
 * [`acm_arn`]: String(required): The ACM ARN to use on the alb
 * [`ami`]: String(required): The AMI ID to use for the vault instances
 * [`dns_root`]: String(required): The root domain to configure for vault
 * [`lb_subnets`]: List(required): The subnets to use for the alb
 * [`key_name`]: String(required): Name of the sshkey to deploy on the vault instances
-* [`teleport_auth_server`]: String(required): The hostname or ip of the Teleport auth server.
-* [`teleport_node_sg`]: String(required): The security-group ID of the teleport server.
-* [`teleport_token_1`]: String(required): The Teleport token for the first instance. This can be a dynamic short-lived token.
-* [`teleport_token_2`]: String(required): The Teleport token for the second instance. This can be a dynamic short-lived token.
+* [`teleport_auth_server`]: String(optional): The hostname or ip of the Teleport auth server. If empty, Teleport integration will be disabled (default).
+* [`teleport_node_sg`]: String(optional): The security-group ID of the teleport server.
+* [`teleport_token_1`]: String(optional): The Teleport token for the first instance. This can be a dynamic short-lived token.
+* [`teleport_token_2`]: String(optional): The Teleport token for the second instance. This can be a dynamic short-lived token.
 * [`vault1_subnet`]: String(required): The subnet ID for the first vault instance
 * [`vault2_subnet`]: String(required): The subnet ID for the second vault instance
 * [`vpc_id`]: String(required): The VPC id to launch the instances in.
@@ -166,24 +167,26 @@ Both vault servers are configured with Teleport for SSH management.
 * [`vault_nproc`]: String(optional): The amount of nproc to configure vault with. Set this to the amount of CPU cores. Defaults to 1
 
 ### Output
- * [`sg_id`]: String: The vault security-group id
- * [`vault_route53_record`]: String: The main vault route53 record id
- * [`vault1_route53_record`]: String: The vault1 route53 record id
- * [`vault2_route53_record`]: String: The vault2 route53 record id
- * [`vault1_instance_id`]: String: The vault1 instance ID
- * [`vault2_instance_id`]: String: The vault2 instance ID
- * [`vault1_role_id`]: String: The vault1 instance-role ID
- * [`vault2_role_id`]: String: The vault2 instance-role ID
- * [`iam_policy`]: String: The iam policy ARN used for vault
- * [`alb_main_target_group`]: String: The default alb target group ARN
- * [`alb_vault1_target_group`]: String: The vault1 target group ARN
- * [`alb_vault2_target_group`]: String: The vault2 target group ARN
- * [`alb_sg_id`]: String: The alb security group ID
- * [`alb_id`]: String: The alb id
- * [`alb_arn`]: String: The alb ARN
+
+* [`sg_id`]: String: The vault security-group id
+* [`vault_route53_record`]: String: The main vault route53 record id
+* [`vault1_route53_record`]: String: The vault1 route53 record id
+* [`vault2_route53_record`]: String: The vault2 route53 record id
+* [`vault1_instance_id`]: String: The vault1 instance ID
+* [`vault2_instance_id`]: String: The vault2 instance ID
+* [`vault1_role_id`]: String: The vault1 instance-role ID
+* [`vault2_role_id`]: String: The vault2 instance-role ID
+* [`iam_policy`]: String: The iam policy ARN used for vault
+* [`alb_main_target_group`]: String: The default alb target group ARN
+* [`alb_vault1_target_group`]: String: The vault1 target group ARN
+* [`alb_vault2_target_group`]: String: The vault2 target group ARN
+* [`alb_sg_id`]: String: The alb security group ID
+* [`alb_id`]: String: The alb id
+* [`alb_arn`]: String: The alb ARN
 
 ### Example
-```
+
+```terraform
 module "ha_vault" {
   source               = "github.com/skyscrapers/terraform-instances//vault?ref=2.0.0"
   teleport_auth_server = "10.10.0.100:3025"

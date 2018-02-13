@@ -14,7 +14,7 @@ data "template_cloudinit_config" "vault1" {
 
   part {
     content_type = "text/x-shellscript"
-    content      = "${module.teleport_vault1.teleport_bootstrap_script}"
+    content      = "${var.teleport_auth_server == "" ? "" : module.teleport_vault1.teleport_bootstrap_script}"
   }
 }
 
@@ -34,7 +34,7 @@ data "template_cloudinit_config" "vault2" {
 
   part {
     content_type = "text/x-shellscript"
-    content      = "${module.teleport_vault2.teleport_bootstrap_script}"
+    content      = "${var.teleport_auth_server == "" ? "" : module.teleport_vault2.teleport_bootstrap_script}"
   }
 }
 
@@ -45,8 +45,8 @@ data "template_file" "cloudconfig_vault1" {
     vault_dns         = "vault1.${var.dns_root}"
     vault_nproc       = "${var.vault_nproc}"
     vault_cluster_dns = "vault.${var.dns_root}"
-    teleport_config   = "${module.teleport_vault1.teleport_config_cloudinit}"
-    teleport_service  = "${module.teleport_vault1.teleport_service_cloudinit}"
+    teleport_config   = "${var.teleport_auth_server == "" ? "" : module.teleport_vault1.teleport_config_cloudinit}"
+    teleport_service  = "${var.teleport_auth_server == "" ? "" : module.teleport_vault1.teleport_service_cloudinit}"
   }
 }
 
@@ -57,8 +57,8 @@ data "template_file" "cloudconfig_vault2" {
     vault_dns         = "vault2.${var.dns_root}"
     vault_nproc       = "${var.vault_nproc}"
     vault_cluster_dns = "vault.${var.dns_root}"
-    teleport_config   = "${module.teleport_vault2.teleport_config_cloudinit}"
-    teleport_service  = "${module.teleport_vault2.teleport_service_cloudinit}"
+    teleport_config   = "${var.teleport_auth_server == "" ? "" : module.teleport_vault2.teleport_config_cloudinit}"
+    teleport_service  = "${var.teleport_auth_server == "" ? "" : module.teleport_vault2.teleport_service_cloudinit}"
   }
 }
 
@@ -68,6 +68,7 @@ data "template_file" "install" {
   vars {
     download_url_vault    = "${var.download_url_vault}"
     download_url_teleport = "${var.download_url_teleport}"
+    teleport_auth_server  = "${var.teleport_auth_server}"
   }
 }
 
