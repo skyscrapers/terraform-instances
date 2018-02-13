@@ -15,7 +15,7 @@ sudo mv vault /usr/local/bin
 sudo chmod 0755 /usr/local/bin/vault
 sudo chown root:root /usr/local/bin/vault
 
-if [ -z "${teleport_auth_server}" ]; then
+if [ -n "${teleport_auth_server}" ]; then
   curl -L "${download_url_teleport}" > /tmp/teleport.tar.gz
 
   sudo tar -xzf teleport.tar.gz
