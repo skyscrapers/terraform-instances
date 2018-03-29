@@ -105,6 +105,23 @@ module "bastion" {
 }
 ```
 
+## is_ebs_optimised
+This module compares the instance that gets passed as a variable to a list of all ebs_optimised instances. If it matches it returns true otherwise false.
+
+### Available variables:
+* [`instance_type`]: String(required): type of instance that you want to know if its ebs_optimised or not
+
+### Output
+* [`is_ebs_optimised`]: Bool: the response whether that instance is ebs_optimised or not.
+
+### Example
+```
+module "is_ebs_optimised" {
+  source        = "github.com/skyscrapers/terraform-instances//is_ebs_optimised?ref=2.3.0"
+  instance_type = "c5.large"
+}
+```
+
 ## puppet-userdata
 
 This module generates a script that bootstraps puppet on the server. It'll install puppet 4 and target `puppetmaster01.int.skyscrape.rs` by default.
