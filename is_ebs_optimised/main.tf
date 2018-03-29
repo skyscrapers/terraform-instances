@@ -1,3 +1,7 @@
+locals {
+  ebs_optimised = "${contains(var.ebs_optimized_list,var.instance_type)}"
+}
+
 variable "ebs_optimized_list" {
   type = "list"
 
