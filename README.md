@@ -112,7 +112,7 @@ This module compares the instance that gets passed as a variable to a list of al
 * [`instance_type`]: String(required): type of instance that you want to know if its ebs_optimised or not
 
 ### Output
-* [`is_ebs_optimised`]: Bool: the responce whether that instance is ebs_optimised or not.
+* [`is_ebs_optimised`]: Bool: the response whether that instance is ebs_optimised or not.
 
 ### Example
 ```
