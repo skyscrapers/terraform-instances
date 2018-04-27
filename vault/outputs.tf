@@ -26,8 +26,16 @@ output "vault1_role_id" {
   value = "${module.vault1.role_id}"
 }
 
+output "vault1_role_name" {
+  value = "${module.vault1.role_name}"
+}
+
 output "vault2_role_id" {
   value = "${module.vault2.role_id}"
+}
+
+output "vault2_role_name" {
+  value = "${module.vault2.role_name}"
 }
 
 output "iam_policy" {
