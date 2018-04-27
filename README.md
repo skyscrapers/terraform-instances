@@ -79,6 +79,7 @@ module "bastion" {
 
 ### Output
  * [`role_id`]: String: The ID of the role
+ * [`role_name`]: String: The name of the role
  * [`instance_ids`]: List: The instance IDs.
  * [`instance_azs`]: List: The availability zone of the instances.
  * [`instance_key_names`]: List: The key name of the instances
@@ -192,7 +193,9 @@ Two route53 records are provided to access the individual instances.
 * [`vault1_instance_id`]: String: The vault1 instance ID
 * [`vault2_instance_id`]: String: The vault2 instance ID
 * [`vault1_role_id`]: String: The vault1 instance-role ID
+* [`vault1_role_name`]: String: The vault1 instance-role name
 * [`vault2_role_id`]: String: The vault2 instance-role ID
+* [`vault2_role_name`]: String: The vault2 instance-role name
 * [`iam_policy`]: String: The iam policy ARN used for vault
 * [`alb_main_target_group`]: String: The default alb target group ARN
 * [`alb_vault1_target_group`]: String: The vault1 target group ARN
