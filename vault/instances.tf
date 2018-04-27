@@ -3,7 +3,7 @@ locals {
 }
 
 module "vault1" {
-  source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.1.1"
+  source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.3.2"
   project       = "${var.project}"
   environment   = "${terraform.workspace}"
   name          = "vault1"
@@ -16,7 +16,7 @@ module "vault1" {
 }
 
 module "vault2" {
-  source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.1.1"
+  source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.3.2"
   project       = "${var.project}"
   environment   = "${terraform.workspace}"
   name          = "vault2"
