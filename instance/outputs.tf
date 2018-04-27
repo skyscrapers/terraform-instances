@@ -41,3 +41,7 @@ output "instance_subnet_ids" {
 output "role_id" {
   value = "${aws_iam_role.role.0.id}"
 }
+
+output "role_name" {
+  value = "${aws_iam_role.role.0.name}"
+}
