@@ -5,7 +5,7 @@ locals {
 module "vault1" {
   source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.3.2"
   project       = "${var.project}"
-  environment   = "${terraform.workspace}"
+  environment   = "${var.environment}"
   name          = "vault1"
   sgs           = "${local.security_groups}"
   subnets       = ["${var.vault1_subnet}"]
@@ -18,7 +18,7 @@ module "vault1" {
 module "vault2" {
   source        = "github.com/skyscrapers/terraform-instances//instance?ref=2.3.2"
   project       = "${var.project}"
-  environment   = "${terraform.workspace}"
+  environment   = "${var.environment}"
   name          = "vault2"
   sgs           = "${local.security_groups}"
   subnets       = ["${var.vault2_subnet}"]

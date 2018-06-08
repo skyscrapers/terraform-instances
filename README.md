@@ -182,6 +182,7 @@ Two route53 records are provided to access the individual instances.
 * [`instance_type`]: String(optional): The instance type to use for the vault servers. Defaults to t2.micro
 * [`lb_internal`]: Bool(optional): Should the ALB be created as an internal Loadbalancer
 * [`project`]: String(required): Name of the project
+* [`environment`]: String(required): Name of the environment where to deploy Vault (just for naming reasons)
 * [`vault_nproc`]: String(optional): The amount of nproc to configure vault with. Set this to the amount of CPU cores. Defaults to 1
 
 ### Output

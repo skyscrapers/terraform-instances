@@ -1,7 +1,7 @@
 module "alb" {
   source                       = "github.com/skyscrapers/terraform-loadbalancers//alb?ref=3.1.2"
   name                         = "vault"
-  environment                  = "${terraform.workspace}"
+  environment                  = "${var.environment}"
   project                      = "${var.project}"
   vpc_id                       = "${var.vpc_id}"
   subnets                      = "${var.lb_subnets}"
