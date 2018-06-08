@@ -1,5 +1,7 @@
 variable "project" {}
 
+variable "environment" {}
+
 variable "lb_internal" {
   default = false
 }
