@@ -36,6 +36,7 @@ resource "aws_instance" "instance" {
   }
 
   credit_specification {
+    count  = "${module.cpu_credits_available.cpu_credits_available}"
     cpu_credits = "${var.cpu_credits}"
   }
 }
