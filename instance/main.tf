@@ -34,6 +34,10 @@ resource "aws_instance" "instance" {
   lifecycle {
     ignore_changes = ["key_name", "user_data"]
   }
+
+  credit_specification {
+    cpu_credits = "${var.cpu_credits}"
+  }
 }
 
 resource "aws_instance" "instance_no_ebs" {
