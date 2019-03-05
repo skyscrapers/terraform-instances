@@ -19,7 +19,7 @@ output "instance_public_ips" {
 }
 
 output "instance_network_interface_ids" {
-  value = ["${concat(aws_instance.instance.*.network_interface_id, aws_instance.instance_no_ebs.*.network_interface_id)}"]
+  value = ["${concat(aws_instance.instance.*.primary_network_interface_id, aws_instance.instance_no_ebs.*.primary_network_interface_id)}"]
 }
 
 output "instance_private_dns" {
