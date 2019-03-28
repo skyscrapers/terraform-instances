@@ -68,6 +68,7 @@ variable "tags" {
   type        = "map"
   default     = {}
 }
+
 variable "cpu_credits" {
   type        = "string"
   description = "The type of cpu credits to use"
