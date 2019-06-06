@@ -1,4 +1,5 @@
 variable "instance_count" {
+  type = number
   default = 1
 }
 
@@ -80,4 +81,3 @@ variable "cpu_credits" {
   description = "The type of cpu credits to use"
   default     = "standard"
 }
-
