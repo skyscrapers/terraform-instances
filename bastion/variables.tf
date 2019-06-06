@@ -1,6 +1,8 @@
-variable "project" {}
+variable "project" {
+}
 
-variable "environment" {}
+variable "environment" {
+}
 
 variable "name" {
   default = "bastion"
@@ -8,7 +10,7 @@ variable "name" {
 
 variable "subnets" {
   description = "The subnets where the bastion host must be placed in."
-  type        = "list"
+  type        = list(string)
 }
 
 variable "ami" {
@@ -19,18 +21,20 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "vpc_id" {}
+variable "vpc_id" {
+}
 
 variable "sg_all_id" {
   description = "ID of the generic security group that will be extended to allow SSH access from the bastion host"
 }
 
 variable "sgs" {
-  type    = "list"
+  type    = list(string)
   default = []
 }
 
-variable "ssh_key_name" {}
+variable "ssh_key_name" {
+}
 
 variable "policy" {
   default = <<EOF
@@ -47,6 +51,7 @@ variable "policy" {
   ]
 }
 EOF
+
 }
 
 variable "termination_protection" {
@@ -67,7 +72,7 @@ variable "root_vl_delete" {
 
 variable "user_data" {
   default = [""]
-  type    = "list"
+  type = list(string)
 }
 
 variable "ebs_block_devices" {
@@ -80,6 +85,7 @@ variable "ebs_enabled" {
 
 variable "tags" {
   description = "Optional tags"
-  type        = "map"
-  default     = {}
+  type = map(string)
+  default = {}
 }
+

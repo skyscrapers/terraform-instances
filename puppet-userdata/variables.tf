@@ -29,3 +29,4 @@ variable "domain" {
   description = "Domain to set as hostname"
   default     = "skyscrape.rs"
 }
+
