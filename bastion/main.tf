@@ -47,7 +47,7 @@ module "bastion_host" {
   root_vl_delete         = var.root_vl_delete
   user_data              = var.user_data
   public_ip              = "true"
-  ebs_block_devices      = [var.ebs_block_devices]
+  ebs_block_devices      = var.ebs_block_devices
   ebs_enabled            = var.ebs_enabled
   tags                   = var.tags
 }
