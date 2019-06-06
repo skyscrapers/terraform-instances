@@ -1,7 +1,3 @@
-terraform {
-  required_version = ">= 0.12"
-}
-
 data "template_file" "metadata_puppet" {
   count    = var.amount_of_instances
   template = file("${path.module}/templates/metadata.tpl")

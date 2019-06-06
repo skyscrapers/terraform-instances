@@ -1,7 +1,3 @@
-terraform {
-  required_version = ">= 0.12"
-}
-
 # Create bastion sg
 resource "aws_security_group" "sg_bastion" {
   name        = "sg_${var.name}_${var.project}_${var.environment}"

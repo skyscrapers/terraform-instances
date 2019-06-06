@@ -1,7 +1,3 @@
-terraform {
-  required_version = ">= 0.12"
-}
-
 module "is_ebs_optimised" {
   source        = "../is_ebs_optimised"
   instance_type = var.instance_type

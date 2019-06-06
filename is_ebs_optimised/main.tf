@@ -1,7 +1,3 @@
-terraform {
-  required_version = ">= 0.12"
-}
-
 locals {
   ebs_optimised = contains(var.ebs_optimized_list, var.instance_type)
 }
