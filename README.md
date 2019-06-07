@@ -143,7 +143,7 @@ This module generates a script that bootstraps puppet on the server. It'll insta
 ```
 module "tools_userdata" {
   source              = "github.com/skyscrapers/terraform-instances//puppet-userdata?ref=1.0.1"
-  amount_of_instances = "1"
+  amount_of_instances = 1
   environment         = terraform.workspace
   customer            = var.customer
   function            = "tools"

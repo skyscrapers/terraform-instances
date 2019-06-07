@@ -1,11 +1,11 @@
 resource "aws_iam_instance_profile" "profile" {
-  count = var.instance_count == "0" ? 0 : 1
+  count = var.instance_count == 0 ? 0 : 1
   name  = "profile_${var.name}_${var.project}_${var.environment}"
   role  = aws_iam_role.role[0].name
 }
 
 resource "aws_iam_role" "role" {
-  count = var.instance_count == "0" ? 0 : 1
+  count = var.instance_count == 0 ? 0 : 1
   name  = "role_${var.name}_${var.project}_${var.environment}"
 
   assume_role_policy = <<EOF
@@ -25,4 +25,3 @@ resource "aws_iam_role" "role" {
 EOF
 
 }
-
