@@ -43,9 +43,9 @@ Terraform modules to set up a few commonly used instances. Based on the instance
 ```
 module "bastion" {
   source = "github.com/skyscrapers/terraform-instances//bastion"
-  vpc_id        = "${module.vpc.vpc_id}"
-  project       = "${var.project}"
-  environment   = "${var.environment}"
+  vpc_id        = module.vpc.vpc_id
+  project       = var.project
+  environment   = var.environment
   sg_all_id     = "sg-xxx"
   sgs           = ["sg-xxx","sg-xyz"]
   subnets       = ["subnet-xxx", "subnet-xyz"]
@@ -66,7 +66,7 @@ module "bastion" {
 * [`key_name`]: String(required): Name of the sshkey to deploy on the bastion instance
 * [`instance_type`]: String(required): The instance type to launch for the bastion host.
 * [`sgs`]: List(required): Additional security groups to add to the bastion host.
-* [`instance_count`]: Int(optional)default 1. Amount of bastion hosts to create.
+* [`instance_count`]: Number(optional)default 1. Amount of bastion hosts to create.
 * [`termination_protection`]: Bool(optional)default false. If true, enables EC2 Instance Termination Protection
 * [`public_ip`]: Bool(optional)default false. Associate a public ip address with an instance in a VPC.
 * [`root_vl_type`]: String(optional)default gp2. The type of volume. Can be "standard", "gp2", or "io1".
@@ -95,8 +95,8 @@ module "bastion" {
 ```
 module "bastion" {
   source = "github.com/skyscrapers/terraform-instances//instance"
-  project       = "${var.project}"
-  environment   = "${var.environment}"
+  project       = var.project
+  environment   = var.environment
   name          = "web"
   sgs           = ["sg-xxx","sg-xyz"]
   subnets       = ["subnet-xxx", "subnet-xyz"]
@@ -144,8 +144,8 @@ This module generates a script that bootstraps puppet on the server. It'll insta
 module "tools_userdata" {
   source              = "github.com/skyscrapers/terraform-instances//puppet-userdata?ref=1.0.1"
   amount_of_instances = "1"
-  environment         = "${terraform.workspace}"
-  customer            = "${var.customer}"
+  environment         = terraform.workspace
+  customer            = var.customer
   function            = "tools"
 }
 ```

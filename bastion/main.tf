@@ -40,13 +40,13 @@ module "bastion_host" {
   instance_type          = var.instance_type
   key_name               = var.ssh_key_name
   sgs                    = concat([aws_security_group.sg_bastion.id], var.sgs)
-  instance_count         = "1"
+  instance_count         = 1
   termination_protection = var.termination_protection
   root_vl_type           = var.root_vl_type
   root_vl_size           = var.root_vl_size
   root_vl_delete         = var.root_vl_delete
   user_data              = var.user_data
-  public_ip              = "true"
+  public_ip              = true
   ebs_block_devices      = var.ebs_block_devices
   ebs_enabled            = var.ebs_enabled
   tags                   = var.tags
