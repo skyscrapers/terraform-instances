@@ -67,10 +67,6 @@ variable "ebs_block_devices" {
   default = []
 }
 
-variable "ebs_enabled" {
-  default = true
-}
-
 variable "tags" {
   description = "Optional tags"
   type        = map(string)
