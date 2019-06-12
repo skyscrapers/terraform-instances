@@ -53,7 +53,7 @@ module "bastion_host" {
 
 resource "aws_eip" "bastion_eip" {
   vpc      = true
-  instance = element(module.bastion_host.instance_ids, 0)
+  instance = module.bastion_host.instance_ids[0]
 }
 
 resource "aws_iam_role_policy" "policy" {
