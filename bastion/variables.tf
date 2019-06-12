@@ -76,6 +76,7 @@ variable "user_data" {
 }
 
 variable "ebs_block_devices" {
+  type = list(map)
   default = []
 }
 
