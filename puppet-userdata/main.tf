@@ -5,7 +5,7 @@ data "template_file" "metadata_puppet" {
   vars = {
     number       = count.index + 1
     environment  = var.environment == "production" ? "" : "-${var.environment}"
-    project      = var.project == "" ? "" : "-${var.project}"
+    project      = var.project == null ? "" : "-${var.project}"
     customer     = var.customer
     function     = var.function
     puppetmaster = var.puppetmaster

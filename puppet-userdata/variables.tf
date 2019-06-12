@@ -9,7 +9,7 @@ variable "customer" {
 
 variable "project" {
   description = "Name of the project"
-  default     = ""
+  default     = null
 }
 
 variable "environment" {
@@ -29,4 +29,3 @@ variable "domain" {
   description = "Domain to set as hostname"
   default     = "skyscrape.rs"
 }
-
