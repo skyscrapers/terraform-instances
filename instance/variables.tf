@@ -1,19 +1,23 @@
 variable "instance_count" {
+  type = number
   default = 1
 }
 
-variable "ami" {}
+variable "ami" {
+}
 
-variable "instance_type" {}
+variable "instance_type" {
+}
 
-variable "key_name" {}
+variable "key_name" {
+}
 
 variable "sgs" {
-  type = "list"
+  type = list(string)
 }
 
 variable "subnets" {
-  type = "list"
+  type = list(string)
 }
 
 variable "termination_protection" {
@@ -38,14 +42,17 @@ variable "root_vl_delete" {
 
 variable "user_data" {
   default = [""]
-  type    = "list"
+  type    = list(string)
 }
 
-variable "name" {}
+variable "name" {
+}
 
-variable "environment" {}
+variable "environment" {
+}
 
-variable "project" {}
+variable "project" {
+}
 
 variable "tag_key" {
   default = ""
@@ -56,21 +63,18 @@ variable "tag_value" {
 }
 
 variable "ebs_block_devices" {
+  type = "list(map(string))"
   default = []
-}
-
-variable "ebs_enabled" {
-  default = true
 }
 
 variable "tags" {
   description = "Optional tags"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "cpu_credits" {
-  type        = "string"
+  type        = string
   description = "The type of cpu credits to use"
   default     = "standard"
 }

@@ -1,9 +1,9 @@
 locals {
-  ebs_optimised = "${contains(var.ebs_optimized_list,var.instance_type)}"
+  ebs_optimised = contains(var.ebs_optimized_list, var.instance_type)
 }
 
 variable "ebs_optimized_list" {
-  type = "list"
+  type = list(string)
 
   default = [
     "a1.medium",
