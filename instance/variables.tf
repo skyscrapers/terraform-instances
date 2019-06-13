@@ -63,7 +63,7 @@ variable "tag_value" {
 }
 
 variable "ebs_block_devices" {
-  type = "list(map(string))"
+  type = list(map(string))
   default = []
 }
 
