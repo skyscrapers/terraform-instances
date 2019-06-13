@@ -48,6 +48,7 @@ module "bastion_host" {
   user_data              = var.user_data
   public_ip              = true
   ebs_block_devices      = var.ebs_block_devices
+  cpu_credits            = var.cpu_credits
   tags                   = var.tags
 }
 

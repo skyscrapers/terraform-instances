@@ -76,7 +76,7 @@ variable "user_data" {
 }
 
 variable "ebs_block_devices" {
-  type = list(map)
+  type = list(map(string))
   default = []
 }
 
@@ -84,4 +84,10 @@ variable "tags" {
   description = "Optional tags"
   type = map(string)
   default = {}
+}
+
+variable "cpu_credits" {
+  type        = string
+  description = "The type of cpu credits to use"
+  default     = "standard"
 }
