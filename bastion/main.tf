@@ -53,7 +53,7 @@ module "bastion_host" {
 }
 
 resource "aws_eip" "bastion_eip" {
-  vpc      = true
+  domain   = "vpc"
   instance = module.bastion_host.instance_ids[0]
 }
 
